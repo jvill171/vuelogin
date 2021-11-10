@@ -13,7 +13,7 @@ const loggingOut = () => {
 </script>
 
 <template>
-    <div class="bg-green-400">
+    <div class="bg-pink-400">
         <div class="container mx-auto flex items-center justify-between text-green-50">
             <h1 class="tracking-tighter text-3xl font-thin">
                 Vue<span class="font-semibold">FakeAuth</span>
@@ -21,20 +21,20 @@ const loggingOut = () => {
             <nav>
                 <ul class="flex space-x-4">
                     <router-link to="/">
-                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-green-300">Home</li>
+                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-pink-300">Home</li>
                     </router-link>
                     <router-link to="/about">
-                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-green-300">About</li>
+                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-pink-300">About</li>
                     </router-link>
                     <router-link v-if="!isAuthenticated" to="/login">
-                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-green-300">Login</li>
+                        <li class="py-5 px-4 hover:cursor-pointer hover:bg-pink-300">Login</li>
                     </router-link>
                     <div v-else class="flex">
                         <router-link to="/secret">
-                            <li class="py-5 px-4 hover:cursor-pointer hover:bg-green-300">Secret</li>
+                            <li class="py-5 px-4 hover:cursor-pointer hover:bg-pink-300">Secret</li>
                         </router-link>
                         <button  @click="loggingOut">
-                            <li class="py-5 px-4 hover:cursor-pointer hover:bg-green-300">Logout</li>
+                            <li class="py-5 px-4 hover:cursor-pointer hover:bg-pink-300">Logout</li>
                         </button>
                     </div>
                 </ul>
