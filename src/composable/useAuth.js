@@ -2,7 +2,9 @@ import { ref } from "vue";
 import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-    signOut
+    signOut,
+    GoogleAuthProvider,
+    signInWithPopup
 } from "firebase/auth";
 
 import { firebaseApp, firebaseAuth } from "./useFirebase";
@@ -12,29 +14,38 @@ const isAuthenticated = ref(false);
 const user = ref("");
 
 const useAuth = () => {
+    const googleLogin = async () =>{
+        const provider = new GoogleAuthProvider();
+        const credentials = await signInWithPopup(firebaseAuth, provider)
+        if(credentials.user){
+            isAuthenticated.value = true;
+            user.value = credentials.user.displayName;
+        }
+    };
+
     const login = async (username, password) => {
-        const response = await signInWithEmailAndPassword(
+        const credentials = await signInWithEmailAndPassword(
             firebaseAuth,
             username,
             password
         );
 
-        if(response.user){
+        if(credentials.user){
             isAuthenticated.value = true;
-            user.value = response.user.email;
+            user.value = credentials.user.email;
         }
     };
 
     const signup = async (username, password) => {
-        const response = await createUserWithEmailAndPassword(
+        const credentials = await createUserWithEmailAndPassword(
             firebaseAuth,
             username,
             password
         );
 
-        if(response.user){
+        if(credentials.user){
             isAuthenticated.value = true;
-            user.value = response.user.email;
+            user.value = credentials.user.email;
         }
     };
 
@@ -44,7 +55,7 @@ const useAuth = () => {
         user.value = "";
     };
 
-    return { isAuthenticated, login, signup, logout, user};
+    return { isAuthenticated, login, signup, logout, user, googleLogin};
 };
 
 export default useAuth;
