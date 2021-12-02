@@ -1,10 +1,31 @@
-
-<template >
-<div class="flex-col flex items-center justify-center min-h-screen-nonav">
-    <h2 class=" text-6xl font-extralight tracking-tighter z-50 pb-4">Secret Page</h2>
-    <div class="flex-col flex items-center justify-center border-2 border-pink-400 rounded-lg">
-        <img src="../assets/bg_secret.png"  alt="Secret BG">
-        <p class="border-t-2 border-pink-400 bg-pink-300 px-4 text-lg text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem veritatis expedita laboriosam repellat ducimus facilis dicta aliquam deleniti nemo ad! Asperiores ipsa perferendis sapiente porro nihil illum architecto totam neque. Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur est impedit illo saepe quisquam delectus numquam cupiditate vel non animi, similique tempore, nisi labore et pariatur, illum unde tempora inventore?</p>
+<template>
+  <h1 class="text-6xl font-thin tracking-tighter text-center mt-8">
+    Cool Chat
+  </h1>
+  <div
+    class="
+      min-h-[500px]
+      w-full
+      mt-8
+      rounded-lg
+      shadow-2xl
+      flex flex-col
+      justify-between
+    "
+  >
+    <ul class="p-4 space-y-4">
+      <li v-for="n in 5" :key="n">
+        <div class="flex justify-between bg-gray-200 px-4 py-2 rounded-lg">
+          <span>Message itself</span> <span>by Author Name</span>
+        </div>
+      </li>
+    </ul>
+    <div>
+      <input
+        class="w-full p-4 rounded-b-lg focus:outline-none focus:bg-blue-100"
+        type="text"
+        placeholder="Type a message ..."
+      />
     </div>
-</div>
+  </div>
 </template>
